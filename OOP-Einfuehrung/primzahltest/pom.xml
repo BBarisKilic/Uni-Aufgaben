@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>primzahltest</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <artifactId>checkstyle</artifactId>
+            <groupId>com.puppycrawl.tools</groupId>
+            <version>10.17.0</version>
+          </dependency>
+          <dependency>
+            <artifactId>spring-javaformat-checkstyle</artifactId>
+            <groupId>io.spring.javaformat</groupId>
+            <version>0.0.43</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <configuration>
+              <configLocation>google_checks.xml</configLocation>
+              <includeTestSourceDirectory>true</includeTestSourceDirectory>
+              <suppressionsLocation>config/checkstyle/google_checks_suppressions.xml
+              </suppressionsLocation>
+              <violationSeverity>warning</violationSeverity>
+            </configuration>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <id>google-checks</id>
+            <phase>validate</phase>
+          </execution>
+          <execution>
+            <configuration>
+              <configLocation>config/checkstyle/bbk_checks.xml</configLocation>
+              <includeTestSourceDirectory>true</includeTestSourceDirectory>
+              <violationSeverity>warning</violationSeverity>
+            </configuration>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <id>bbk-checks</id>
+            <phase>validate</phase>
+          </execution>
+        </executions>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.5.0</version>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <dependencies>
+    <dependency>
+      <artifactId>junit</artifactId>
+      <groupId>junit</groupId>
+      <scope>test</scope>
+      <version>3.8.2</version>
+    </dependency>
+  </dependencies>
+
+  <groupId>com.bbkdevelopment</groupId>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <version>1.0-SNAPSHOT</version>
+
+</project>
